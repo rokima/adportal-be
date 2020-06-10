@@ -34,6 +34,10 @@ namespace adportal_be.Controllers
         // POST: api/Users
         public IHttpActionResult Post([FromBody]User user)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             adportalDbContext.Users.Add(user);
             adportalDbContext.SaveChanges();
             return StatusCode(HttpStatusCode.Created);
@@ -46,6 +50,10 @@ namespace adportal_be.Controllers
             if (entity == null)
             {
                 return BadRequest("No user with such Id found");
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
             entity.FirstName = user.FirstName;
             entity.LastName = user.LastName;
