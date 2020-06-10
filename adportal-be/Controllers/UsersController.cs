@@ -62,6 +62,10 @@ namespace adportal_be.Controllers
         public IHttpActionResult Delete(int id)
         {
             var user = adportalDbContext.Users.Find(id);
+            if (user == null)
+            {
+                return BadRequest("No user with such Id found");
+            }
             adportalDbContext.Users.Remove(user);
             adportalDbContext.SaveChanges();
             return Ok("User deleted");
