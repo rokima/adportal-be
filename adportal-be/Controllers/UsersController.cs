@@ -50,6 +50,9 @@ namespace adportal_be.Controllers
         // DELETE: api/Users/5
         public void Delete(int id)
         {
+            var user = adportalDbContext.Users.Find(id);
+            adportalDbContext.Users.Remove(user);
+            adportalDbContext.SaveChanges();
         }
     }
 }
