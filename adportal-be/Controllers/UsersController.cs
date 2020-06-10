@@ -14,29 +14,39 @@ namespace adportal_be.Controllers
 
         AdPortalDbContext adportalDbContext = new AdPortalDbContext();
         // GET: api/Users
-        public IEnumerable<User> Get()
+        public IHttpActionResult Get()
         {
-            return adportalDbContext.Users;
+            var users = adportalDbContext.Users;
+            return StatusCode(HttpStatusCode.OK);
         }
 
         // GET: api/Users/5
-        public User Get(int id)
+        public IHttpActionResult Get(int id)
         {
             var user = adportalDbContext.Users.Find(id);
-            return user;
+            if (user == null)
+            {
+                return BadRequest("No user with such Id found");
+            }
+            return StatusCode(HttpStatusCode.OK);
         }
 
         // POST: api/Users
-        public void Post([FromBody]User user)
+        public IHttpActionResult Post([FromBody]User user)
         {
             adportalDbContext.Users.Add(user);
             adportalDbContext.SaveChanges();
+            return StatusCode(HttpStatusCode.Created);
         }
 
         // PUT: api/Users/5
-        public void Put(int id, [FromBody]User user)
+        public IHttpActionResult Put(int id, [FromBody] User user)
         {
             var entity = adportalDbContext.Users.FirstOrDefault(u => u.Id == id);
+            if (entity == null)
+            {
+                return BadRequest("No user with such Id found");
+            }
             entity.FirstName = user.FirstName;
             entity.LastName = user.LastName;
             entity.Login = user.Login;
@@ -45,14 +55,16 @@ namespace adportal_be.Controllers
             entity.Country = user.Country;
             entity.City = user.City;
             entity.Address = user.Address;
+            return Ok();
         }
 
         // DELETE: api/Users/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
             var user = adportalDbContext.Users.Find(id);
             adportalDbContext.Users.Remove(user);
             adportalDbContext.SaveChanges();
+            return Ok("User deleted");
         }
     }
 }
