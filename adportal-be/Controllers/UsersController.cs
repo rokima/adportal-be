@@ -17,7 +17,7 @@ namespace adportal_be.Controllers
         public IHttpActionResult Get()
         {
             var users = adportalDbContext.Users;
-            return StatusCode(HttpStatusCode.OK);
+            return Ok(users);
         }
 
         // GET: api/Users/5
@@ -28,7 +28,7 @@ namespace adportal_be.Controllers
             {
                 return BadRequest("No user with such Id found");
             }
-            return StatusCode(HttpStatusCode.OK);
+            return Ok(user);
         }
 
         // POST: api/Users
@@ -55,7 +55,7 @@ namespace adportal_be.Controllers
             entity.Country = user.Country;
             entity.City = user.City;
             entity.Address = user.Address;
-            return Ok();
+            return Ok(entity);
         }
 
         // DELETE: api/Users/5

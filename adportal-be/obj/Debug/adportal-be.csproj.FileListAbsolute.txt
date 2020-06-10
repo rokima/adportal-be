@@ -64,8 +64,10 @@ C:\Users\Ronald\git\adportal-be\adportal-be\bin\System.Net.Http.Formatting.xml
 C:\Users\Ronald\git\adportal-be\adportal-be\bin\System.Web.Http.xml
 C:\Users\Ronald\git\adportal-be\adportal-be\bin\System.Web.Http.WebHost.xml
 C:\Users\Ronald\git\adportal-be\adportal-be\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Ronald\git\adportal-be\adportal-be\obj\Debug\adportal-be.csprojAssemblyReference.cache
 C:\Users\Ronald\git\adportal-be\adportal-be\obj\Debug\adportal-be.csproj.CoreCompileInputs.cache
 C:\Users\Ronald\git\adportal-be\adportal-be\obj\Debug\adportal-be.csproj.CopyComplete
 C:\Users\Ronald\git\adportal-be\adportal-be\obj\Debug\adportal-be.dll
 C:\Users\Ronald\git\adportal-be\adportal-be\obj\Debug\adportal-be.pdb
+C:\Users\Ronald\git\adportal-be\adportal-be\bin\System.Web.Cors.dll
+C:\Users\Ronald\git\adportal-be\adportal-be\bin\System.Web.Http.Cors.dll
+C:\Users\Ronald\git\adportal-be\adportal-be\bin\System.Web.Http.Cors.xml

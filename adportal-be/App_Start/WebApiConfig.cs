@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace adportal_be
 {
@@ -11,7 +12,7 @@ namespace adportal_be
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            config.EnableCors(new EnableCorsAttribute("http://localhost:4200, ", "*", "*"));
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -20,7 +21,7 @@ namespace adportal_be
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 }
