@@ -2,6 +2,7 @@
 using adportal_be.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -37,6 +38,15 @@ namespace adportal_be.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+            using (var ctx = new AdPortalDbContext())
+            { 
+                var duplicate = ctx.Users.SqlQuery(
+                    "SELECT * FROM Users where Login=@Login", new System.Data.SqlClient.SqlParameter("@Login", user.Login)
+                    ).ToList<User>();
+                if (duplicate.Count() > 0) {
+                    return BadRequest("Duplicate login");
+                }
             }
             adportalDbContext.Users.Add(user);
             adportalDbContext.SaveChanges();

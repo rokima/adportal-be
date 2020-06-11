@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "adportal_be.Data.AdPortalDbContext";
         }
 
         protected override void Seed(adportal_be.Data.AdPortalDbContext context)
