@@ -98,16 +98,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdvertisementController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Data\AdPortalDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202006111757258_AdPortalDbAddViewModels.cs" />
-    <Compile Include="Migrations\202006111757258_AdPortalDbAddViewModels.designer.cs">
-      <DependentUpon>202006111757258_AdPortalDbAddViewModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Advertisement.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Image.cs" />
@@ -126,11 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006111757258_AdPortalDbAddViewModels.resx">
-      <DependentUpon>202006111757258_AdPortalDbAddViewModels.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

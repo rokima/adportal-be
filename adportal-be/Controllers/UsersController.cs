@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.InteropServices.ComTypes;
 using System.Web.Http;
 
 namespace adportal_be.Controllers
@@ -14,6 +15,7 @@ namespace adportal_be.Controllers
     {
 
         AdPortalDbContext adportalDbContext = new AdPortalDbContext();
+    
         // GET: api/Users
         public IHttpActionResult Get()
         {

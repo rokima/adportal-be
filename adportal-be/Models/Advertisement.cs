@@ -9,14 +9,13 @@ namespace adportal_be.Models
     public class Advertisement
     {
         public int Id { get; set; }
-
-        public string Categories { get; set; }
         [Required]
         [MaxLength(80), MinLength(10)]
         public string Title { get; set; }
         [Required]
         [MaxLength(500)]
         public string Description { get; set; }
+        public string Price { get; set; }
         public DateTime CreationDate { get; set; }
         public string Active { get; set; }
 

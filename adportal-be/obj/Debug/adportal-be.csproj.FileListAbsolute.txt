@@ -72,5 +72,5 @@ C:\Users\Ronald\git\adportal-be\adportal-be\bin\System.Web.Cors.dll
 C:\Users\Ronald\git\adportal-be\adportal-be\bin\System.Web.Http.Cors.dll
 C:\Users\Ronald\git\adportal-be\adportal-be\bin\System.Web.Http.Cors.xml
 C:\Users\Ronald\git\adportal-be\adportal-be\obj\Debug\adportal-be.csprojAssemblyReference.cache
-C:\Users\Ronald\git\adportal-be\adportal-be\obj\Debug\adportal_be.Migrations.AdPortalDbAddViewModels.resources
+C:\Users\Ronald\git\adportal-be\adportal-be\obj\Debug\adportal_be.Migrations.AdPortalDbInitializeTestData.resources
 C:\Users\Ronald\git\adportal-be\adportal-be\obj\Debug\adportal-be.csproj.GenerateResource.cache

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using adportal_be.Data;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
@@ -22,6 +24,7 @@ namespace adportal_be
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
         }
     }
 }
