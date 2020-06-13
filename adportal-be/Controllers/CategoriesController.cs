@@ -20,6 +20,16 @@ namespace adportal_be.Controllers
             var categories = adPortalDbContext.Categories;
             return Ok(categories);
         }
+        //Get category by id
+        public IHttpActionResult Get(int id)
+        {
+            var category = adPortalDbContext.Categories.Find(id);
+            if (category == null)
+            {
+                return BadRequest("No category with such id");
+            }
+            return Ok(category);
+        }
 
     }
 }

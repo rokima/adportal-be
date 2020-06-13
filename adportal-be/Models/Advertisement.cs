@@ -17,7 +17,7 @@ namespace adportal_be.Models
         public string Description { get; set; }
         public string Price { get; set; }
         public DateTime CreationDate { get; set; }
-        public string Active { get; set; }
+        public bool Active { get; set; }
 
         public ICollection<Image> Images { get; set; }
     }

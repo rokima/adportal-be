@@ -1,5 +1,6 @@
 ﻿using adportal_be.Data;
 using adportal_be.Models;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -7,12 +8,24 @@ using System.Web.Http;
 
 namespace adportal_be.Controllers
 {
-    public class AdvertisementController : ApiController
+    public class AdvertisementsController : ApiController
     {
 
         AdPortalDbContext adportalDbContext = new AdPortalDbContext();
 
         // GET: api/Advertisement
+        [Route("api/Advertisements/Category/{CategoryId}")]
+        public IHttpActionResult GetAdvertisementsByCategory(int CategoryId)
+        {
+            var advertisements = new List<Advertisement>();
+            using (var ctx = new AdPortalDbContext())
+            {
+                advertisements = ctx.Advertisements.SqlQuery(
+                    "SELECT * FROM Advertisements where Category_Id=@CategoryId", new System.Data.SqlClient.SqlParameter("@CategoryId", CategoryId)
+                    ).ToList<Advertisement>();
+            }
+            return Ok(advertisements);
+        }
         public IHttpActionResult Get(string sort)
         {
             /*IQueryable<Advertisement> advertisements = adportalDbContext.Advertisements.Include("Types");
