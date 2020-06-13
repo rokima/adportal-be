@@ -14,10 +14,24 @@ namespace adportal_be.Controllers
     {
         AdPortalDbContext adPortalDbContext = new AdPortalDbContext();
         //Get all types
-        public IHttpActionResult Get();
+        public IHttpActionResult Get()
         {
-            
+            var types = adPortalDbContext.Types;
+            return Ok(types);
         }
+
+        //Get type by id
+        public IHttpActionResult Get(int id)
+        {
+            var types = adPortalDbContext.Types.Find(id);
+            if(types == null)
+            {
+                return BadRequest("No type with such id");
+            }
+            return Ok(types);
+
+        }
+
         
 
     }
