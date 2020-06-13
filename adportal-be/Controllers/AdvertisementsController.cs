@@ -26,14 +26,24 @@ namespace adportal_be.Controllers
             }
             return Ok(advertisements);
         }
+
+        [Route("api/Advertisements/Type/{TypeId}")]
+        public IHttpActionResult GetAdvertisementByType (int TypeId)
+        {
+            var advertisements = new List<Advertisement>();
+            using (var ctx = new AdPortalDbContext())
+            {
+                advertisements = ctx.Advertisements.SqlQuery(
+                    "SELECT * FROM Advertisements where AdType_Id=@TypeId", new System.Data.SqlClient.SqlParameter("@TypeId", TypeId)
+                    ).ToList<Advertisement>();
+            }
+            return Ok(advertisements);
+        }
+
+
         public IHttpActionResult Get(string sort)
         {
-            /*IQueryable<Advertisement> advertisements = adportalDbContext.Advertisements.Include("Types");
-            switch (sort)
-            {
-                case "Buy":
-                   advertisements = adportalDbContext.Advertisements.Find(a =>  );
-            }*/
+        
             var advertisements = adportalDbContext.Advertisements;
             return Ok(advertisements);
         }

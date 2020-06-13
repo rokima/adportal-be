@@ -15,7 +15,7 @@ namespace adportal_be.Models
         [Required]
         [MaxLength(500)]
         public string Description { get; set; }
-        public string Price { get; set; }
+        public int Price { get; set; }
         public DateTime CreationDate { get; set; }
         public bool Active { get; set; }
 

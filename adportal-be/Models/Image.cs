@@ -8,7 +8,7 @@ namespace adportal_be.Models
 {
     public class Image
     {
-        public int ImageId { get; set; }
+        public int Id { get; set; }
         [Required]
         public string FileName { get; set; }
         public string Data { get; set; }
