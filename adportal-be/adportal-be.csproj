@@ -142,9 +142,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202006131906492_AdPortalDbCorrectModelDb.cs" />
-    <Compile Include="Migrations\202006131906492_AdPortalDbCorrectModelDb.designer.cs">
-      <DependentUpon>202006131906492_AdPortalDbCorrectModelDb.cs</DependentUpon>
+    <Compile Include="Migrations\202006132029448_AdPortalDbCorrectModelDb.cs" />
+    <Compile Include="Migrations\202006132029448_AdPortalDbCorrectModelDb.designer.cs">
+      <DependentUpon>202006132029448_AdPortalDbCorrectModelDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Advertisement.cs" />
@@ -171,8 +171,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006131906492_AdPortalDbCorrectModelDb.resx">
-      <DependentUpon>202006131906492_AdPortalDbCorrectModelDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006132029448_AdPortalDbCorrectModelDb.resx">
+      <DependentUpon>202006132029448_AdPortalDbCorrectModelDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

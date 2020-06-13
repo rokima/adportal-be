@@ -35,7 +35,7 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         FileName = c.String(nullable: false),
-                        Data = c.String(),
+                        ImageUrl = c.String(),
                         Advertisement_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)

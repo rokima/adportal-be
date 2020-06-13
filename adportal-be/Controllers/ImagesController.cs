@@ -54,7 +54,7 @@ namespace adportal_be.Controllers
                 return BadRequest(ModelState);
             }
             entity.FileName = image.FileName;
-            entity.Data = image.Data;
+            entity.ImageUrl = image.ImageUrl;
             return Ok(entity);
         }
 

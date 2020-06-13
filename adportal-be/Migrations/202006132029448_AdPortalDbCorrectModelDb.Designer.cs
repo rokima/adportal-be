@@ -13,7 +13,7 @@ namespace adportal_be.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202006131906492_AdPortalDbCorrectModelDb"; }
+            get { return "202006132029448_AdPortalDbCorrectModelDb"; }
         }
         
         string IMigrationMetadata.Source
