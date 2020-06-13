@@ -43,8 +43,20 @@ namespace adportal_be.Controllers
 
         public IHttpActionResult Get(string sort)
         {
-        
-            var advertisements = adportalDbContext.Advertisements;
+            IQueryable<Advertisement> advertisements;
+            switch (sort)
+            {
+                case "newer":
+                    advertisements = adportalDbContext.Advertisements.OrderByDescending(a => a.CreationDate);
+                    break;
+                case "older":
+                    advertisements = adportalDbContext.Advertisements.OrderBy(a => a.CreationDate);
+                    break;
+                default:
+                    advertisements = adportalDbContext.Advertisements;
+                    break;
+            }
+            //var advertisements = adportalDbContext.Advertisements;
             return Ok(advertisements);
         }
 
