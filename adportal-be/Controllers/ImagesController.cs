@@ -47,7 +47,7 @@ namespace adportal_be.Controllers
             var entity = adPortalDbContext.Images.FirstOrDefault(i => i.Id == id);
             if (entity == null)
             {
-                return BadRequest("No advertisement with such id found");
+                return BadRequest("No image with such id found");
             }
             if (!ModelState.IsValid)
             {
