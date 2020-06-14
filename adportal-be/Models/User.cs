@@ -24,11 +24,11 @@ namespace adportal_be.Models
         [Required]
         [StringLength(25), MinLength(6)]
         public string Password { get; set; }
-        [RegularExpression("[A-Z][a-z]")]
+        [RegularExpression(@"^[a-zA-Z]+$")]
         public string Country { get; set; }
-        [RegularExpression("[A-Z][a-z]")]
+        [RegularExpression(@"^[a-zA-Z]+$")]
         public string City { get; set; }
-        [RegularExpression("[A-Z][a-z]")]
+        [RegularExpression(@"^[a-zA-Z]+$")]
         public string Address { get; set; }
 
         public ICollection<Advertisement> Advertisements { get; set; }
