@@ -1,5 +1,6 @@
 ﻿using adportal_be.Data;
 using adportal_be.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -78,6 +79,7 @@ namespace adportal_be.Controllers
             {
                 return BadRequest(ModelState);
             }
+            advertisement.CreationDate = DateTime.Now;
             adportalDbContext.Advertisements.Add(advertisement);
             adportalDbContext.SaveChanges();
             return StatusCode(HttpStatusCode.Created);
