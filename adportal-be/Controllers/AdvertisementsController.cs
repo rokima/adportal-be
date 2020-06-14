@@ -56,7 +56,7 @@ namespace adportal_be.Controllers
                     advertisements = adportalDbContext.Advertisements;
                     break;
             }
-            //var advertisements = adportalDbContext.Advertisements;
+            
             return Ok(advertisements);
         }
 
@@ -79,6 +79,7 @@ namespace adportal_be.Controllers
                 return BadRequest(ModelState);
             }
             adportalDbContext.Advertisements.Add(advertisement);
+            adportalDbContext.SaveChanges();
             return StatusCode(HttpStatusCode.Created);
         }
 

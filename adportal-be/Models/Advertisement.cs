@@ -10,7 +10,7 @@ namespace adportal_be.Models
     {
         public int Id { get; set; }
         [Required]
-        [MaxLength(80), MinLength(10)]
+        [MaxLength(80), MinLength(5)]
         public string Title { get; set; }
         [Required]
         [MaxLength(500)]
@@ -18,6 +18,7 @@ namespace adportal_be.Models
         public int Price { get; set; }
         public DateTime CreationDate { get; set; }
         public bool Active { get; set; }
+
 
         public ICollection<Image> Images { get; set; }
     }
