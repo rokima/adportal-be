@@ -12,7 +12,13 @@ namespace adportal_be.Controllers
 {
     public class TypesController : ApiController
     {
-        AdPortalDbContext adPortalDbContext = new AdPortalDbContext();
+        //AdPortalDbContext adPortalDbContext = new AdPortalDbContext();
+        public AdPortalDbContext adPortalDbContext;
+        public TypesController(AdPortalDbContext dbContext)
+        {
+            if (dbContext is null) dbContext = new AdPortalDbContext();
+            adPortalDbContext = dbContext;
+        }
         //Get all types
         public IHttpActionResult Get()
         {
@@ -23,8 +29,9 @@ namespace adportal_be.Controllers
         //Get type by id
         public IHttpActionResult Get(int id)
         {
-            var types = adPortalDbContext.Types.Find(id);
-            if(types == null)
+            var types = adPortalDbContext.Types.Where(x => x.Id == id).FirstOrDefault();
+            //var advertisement = adPortalDbContext.Advertisements.Where(x => x.Id == id).FirstOrDefault();
+            if (types == null)
             {
                 return BadRequest("No type with such id");
             }

@@ -14,19 +14,26 @@ namespace adportal_be.Controllers
     public class UsersController : ApiController
     {
 
-        AdPortalDbContext adportalDbContext = new AdPortalDbContext();
-    
+        //AdPortalDbContext adportalDbContext = new AdPortalDbContext();
+        public AdPortalDbContext adPortalDbContext;
+        public UsersController(AdPortalDbContext dbContext)
+        {
+            if (dbContext is null) dbContext = new AdPortalDbContext();
+            adPortalDbContext = dbContext;
+        }
+
         // GET: api/Users
         public IHttpActionResult Get()
         {
-            var users = adportalDbContext.Users;
+            var users = adPortalDbContext.Users;
             return Ok(users);
         }
 
         // GET: api/Users/5
         public IHttpActionResult Get(int id)
         {
-            var user = adportalDbContext.Users.Find(id);
+            var user = adPortalDbContext.Users.Where(x => x.Id == id).FirstOrDefault();
+            //var advertisement = adPortalDbContext.Advertisements.Where(x => x.Id == id).FirstOrDefault();
             if (user == null)
             {
                 return BadRequest("No user with such Id found");
@@ -50,15 +57,15 @@ namespace adportal_be.Controllers
                     return BadRequest("Duplicate login");
                 }
             }
-            adportalDbContext.Users.Add(user);
-            adportalDbContext.SaveChanges();
+            adPortalDbContext.Users.Add(user);
+            adPortalDbContext.SaveChanges();
             return StatusCode(HttpStatusCode.Created);
         }
 
         // PUT: api/Users/5
         public IHttpActionResult Put(int id, [FromBody] User user)
         {
-            var entity = adportalDbContext.Users.FirstOrDefault(u => u.Id == id);
+            var entity = adPortalDbContext.Users.FirstOrDefault(u => u.Id == id);
             if (entity == null)
             {
                 return BadRequest("No user with such Id found");
@@ -81,13 +88,13 @@ namespace adportal_be.Controllers
         // DELETE: api/Users/5
         public IHttpActionResult Delete(int id)
         {
-            var user = adportalDbContext.Users.Find(id);
+            var user = adPortalDbContext.Users.Find(id);
             if (user == null)
             {
                 return BadRequest("No user with such Id found");
             }
-            adportalDbContext.Users.Remove(user);
-            adportalDbContext.SaveChanges();
+            adPortalDbContext.Users.Remove(user);
+            adPortalDbContext.SaveChanges();
             return Ok("User deleted");
         }
     }

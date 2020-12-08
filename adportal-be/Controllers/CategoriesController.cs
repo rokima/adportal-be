@@ -13,8 +13,13 @@ namespace adportal_be.Controllers
     {
 
         //Get all categories
-        AdPortalDbContext adPortalDbContext = new AdPortalDbContext();
-
+        //AdPortalDbContext adPortalDbContext = new AdPortalDbContext();
+        public AdPortalDbContext adPortalDbContext;
+        public CategoriesController(AdPortalDbContext dbContext)
+        {
+            if (dbContext is null) dbContext = new AdPortalDbContext();
+            adPortalDbContext = dbContext;
+        }
         public IHttpActionResult Get()
         {
             var categories = adPortalDbContext.Categories;
@@ -23,7 +28,8 @@ namespace adportal_be.Controllers
         //Get category by id
         public IHttpActionResult Get(int id)
         {
-            var category = adPortalDbContext.Categories.Find(id);
+            var category = adPortalDbContext.Categories.Where(x => x.Id == id).FirstOrDefault();
+            //var advertisement = adPortalDbContext.Advertisements.Where(x => x.Id == id).FirstOrDefault();
             if (category == null)
             {
                 return BadRequest("No category with such id");

@@ -12,10 +12,16 @@ namespace adportal_be.Controllers
     public class AdvertisementsController : ApiController
     {
 
-        AdPortalDbContext adportalDbContext = new AdPortalDbContext();
-
+        //AdPortalDbContext adportalDbContext = new AdPortalDbContext();
+        public AdPortalDbContext adPortalDbContext;
+        public AdvertisementsController(AdPortalDbContext dbContext)
+        {
+            if (dbContext is null) dbContext = new AdPortalDbContext();
+            adPortalDbContext = dbContext;
+        }
         // GET: api/Advertisement
         [Route("api/Advertisements/Category/{CategoryId}")]
+        
         public IHttpActionResult GetAdvertisementsByCategory(int CategoryId)
         {
             var advertisements = new List<Advertisement>();
@@ -48,13 +54,13 @@ namespace adportal_be.Controllers
             switch (sort)
             {
                 case "newer":
-                    advertisements = adportalDbContext.Advertisements.OrderByDescending(a => a.CreationDate);
+                    advertisements = adPortalDbContext.Advertisements.OrderByDescending(a => a.CreationDate);
                     break;
                 case "older":
-                    advertisements = adportalDbContext.Advertisements.OrderBy(a => a.CreationDate);
+                    advertisements = adPortalDbContext.Advertisements.OrderBy(a => a.CreationDate);
                     break;
                 default:
-                    advertisements = adportalDbContext.Advertisements;
+                    advertisements = adPortalDbContext.Advertisements;
                     break;
             }
             
@@ -64,7 +70,8 @@ namespace adportal_be.Controllers
         // GET: api/Advertisement/5
         public IHttpActionResult Get(int id)
         {
-            var advertisement = adportalDbContext.Advertisements.Find(id);
+            var advertisement = adPortalDbContext.Advertisements.Where(x => x.Id == id).FirstOrDefault();
+            //var image = adPortalDbContext.Images.Where(x => x.Id == id).FirstOrDefault();
             if (advertisement == null)
             {
                 return BadRequest("No advertisement with such id");
@@ -80,15 +87,15 @@ namespace adportal_be.Controllers
                 return BadRequest(ModelState);
             }
             advertisement.CreationDate = DateTime.Now;
-            adportalDbContext.Advertisements.Add(advertisement);
-            adportalDbContext.SaveChanges();
+            adPortalDbContext.Advertisements.Add(advertisement);
+            adPortalDbContext.SaveChanges();
             return StatusCode(HttpStatusCode.Created);
         }
 
         // PUT: api/Advertisement/5
         public IHttpActionResult Put(int id, [FromBody] Advertisement advertisement)
         {
-            var entity = adportalDbContext.Advertisements.FirstOrDefault(a => a.Id == id);
+            var entity = adPortalDbContext.Advertisements.FirstOrDefault(a => a.Id == id);
             if(entity == null)
             {
                 return BadRequest("No advertisement with such id found");
@@ -107,13 +114,13 @@ namespace adportal_be.Controllers
         // DELETE: api/Advertisement/5
         public IHttpActionResult Delete(int id)
         {
-            var advertisement = adportalDbContext.Advertisements.Find(id);
+            var advertisement = adPortalDbContext.Advertisements.Find(id);
             if (advertisement == null)
             {
                 return BadRequest("No advertisement with such id found");
             }
-            adportalDbContext.Advertisements.Remove(advertisement);
-            adportalDbContext.SaveChanges();
+            adPortalDbContext.Advertisements.Remove(advertisement);
+            adPortalDbContext.SaveChanges();
             return Ok("Advertisement deleted!");
         }
     }

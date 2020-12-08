@@ -6,12 +6,18 @@ using System.Net.Http;
 using System.Web.Http;
 using adportal_be.Models;
 using adportal_be.Data;
+using System.Threading.Tasks;
 
 namespace adportal_be.Controllers
 {
     public class ImagesController : ApiController
     {
-        AdPortalDbContext adPortalDbContext = new AdPortalDbContext();
+        public AdPortalDbContext adPortalDbContext;
+        public ImagesController(AdPortalDbContext dbContext)
+        {
+            if (dbContext is null) dbContext = new AdPortalDbContext();
+            adPortalDbContext = dbContext;
+        }
         // GET: api/Images
         public IHttpActionResult Get()
         {
@@ -22,7 +28,7 @@ namespace adportal_be.Controllers
         // GET: api/Images/5
         public IHttpActionResult Get(int id)
         {
-            var image = adPortalDbContext.Images.Find(id);
+            var image = adPortalDbContext.Images.Where(x => x.Id == id).FirstOrDefault();
             if(image == null)
             {
                 return BadRequest("Image with such id not found");
@@ -61,7 +67,7 @@ namespace adportal_be.Controllers
         // DELETE: api/Images/5
         public IHttpActionResult Delete(int id)
         {
-            var image = adPortalDbContext.Images.Find(id);
+            var image = adPortalDbContext.Images.Where(x => x.Id == id).FirstOrDefault();
             if (image == null)
             {
                 return BadRequest("No image with such id found");
