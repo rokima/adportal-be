@@ -19,6 +19,7 @@ namespace Tests
         [Test]
         public void AdvertismentsGetWoParameterTest()
         {
+
             // Arrange
             //var mockRepository = new Mock<IMovieRepository>();
             AdPortalDbContext adPortalDbContext = new AdPortalDbContext();
