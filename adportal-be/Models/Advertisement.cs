@@ -19,7 +19,7 @@ namespace adportal_be.Models
         public DateTime CreationDate { get; set; }
         public bool Active { get; set; }
 
-
         public ICollection<Image> Images { get; set; }
+        public ICollection<Category> Categories { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace adportal_be.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AdPortalDbCorrectModelDb : IMigrationMetadata
+    public sealed partial class adportal : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AdPortalDbCorrectModelDb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(adportal));
         
         string IMigrationMetadata.Id
         {
-            get { return "202006132029448_AdPortalDbCorrectModelDb"; }
+            get { return "202012101926585_adportal"; }
         }
         
         string IMigrationMetadata.Source

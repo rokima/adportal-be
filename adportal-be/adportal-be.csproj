@@ -249,9 +249,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202006132029448_AdPortalDbCorrectModelDb.cs" />
-    <Compile Include="Migrations\202006132029448_AdPortalDbCorrectModelDb.designer.cs">
-      <DependentUpon>202006132029448_AdPortalDbCorrectModelDb.cs</DependentUpon>
+    <Compile Include="Migrations\202012101926585_adportal.cs" />
+    <Compile Include="Migrations\202012101926585_adportal.designer.cs">
+      <DependentUpon>202012101926585_adportal.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Advertisement.cs" />
@@ -286,15 +286,15 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006132029448_AdPortalDbCorrectModelDb.resx">
-      <DependentUpon>202006132029448_AdPortalDbCorrectModelDb.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202012101926585_adportal.resx">
+      <DependentUpon>202012101926585_adportal.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

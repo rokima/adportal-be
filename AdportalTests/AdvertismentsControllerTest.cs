@@ -9,7 +9,8 @@ using System.Web.Http.Results;
 using System.Linq;
 using System.Linq.Expressions;
 using Assert = NUnit.Framework.Assert;
-
+using System;
+using System.Net;
 
 namespace Tests
 {
@@ -53,7 +54,7 @@ namespace Tests
             //Assert.AreEqual("DefaultApi", createdResult.RouteName);
             //var f = c.adPortalDbContext.Images.FirstOrDefault(x => x.Id == n);
             //Assert.AreEqual(f.Id, c.Get(n));//createdResult.RouteValues["id"]);
-        } 
+        }
         [Test]
 
         public void AdevertismentsGetMethodWithParameterReturnTest()
@@ -79,10 +80,10 @@ namespace Tests
             //};
 
             // Act    
-            var n = 2;
+            var n = 4;
             var actionResult = c.Get(n);
             var s = actionResult as OkNegotiatedContentResult<Advertisement>;
-            
+
             //var createdResult = actionResult as  CreatedAtRouteNegotiatedContentResult<Image>;
             //var r = actionResult as RedirectToRouteResult;
             //var mo = r.Model as Image;
@@ -114,23 +115,86 @@ namespace Tests
         public void AdvertismentsPostMethodSetsLocationHeader()
         {
             // Arrange
-            var mockRepository = new Mock<AdPortalDbContext>();
-            var controller = new ImagesController(mockRepository.Object);
-            var model = new Image()
+            //var mockRepository = new Mock<AdPortalDbContext>();
+            AdPortalDbContext adPortalDbContext = new AdPortalDbContext();
+            var controller = new AdvertisementsController(adPortalDbContext);
+            var model = new Advertisement()
             {
-                //Id = 1,
-                FileName = "auto",
-                ImageUrl = "www.autopilt.ee", 
+                Title = "kuulutus",
+                Description = "kuulutus",
+                Price = 15,
+                Active = true,
+                CreationDate = DateTime.Now,
+
             };
 
             // Act    
-            IHttpActionResult actionResult = controller.Post(model);
-            var createdResult = actionResult as CreatedAtRouteNegotiatedContentResult<Image>;
+            controller.Post(model);
+            IHttpActionResult actionResult = controller.Get(1);
+            var createdResult = actionResult as CreatedAtRouteNegotiatedContentResult<Advertisement>;
 
             // Assert
-            Assert.IsNotNull(createdResult);
+            //Assert.IsNotNull(createdResult);
+            Assert.AreEqual("kuulutus", createdResult.Content.Title);
+            //Assert.AreEqual(201, AdvertisementsController(model));
+            //Assert.AreEqual(HttpStatusCode.Created, )
             //Assert.AreEqual("DefaultApi", createdResult.RouteName);
             //Assert.AreEqual(model.Title, createdResult.RouteValues["title"]);
         }
+
+        //public IHttpActionResult Post([FromBody] Advertisement advertisement)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+        //    advertisement.CreationDate = DateTime.Now;
+        //    adPortalDbContext.Advertisements.Add(advertisement);
+        //    adPortalDbContext.SaveChanges();
+        //    return StatusCode(HttpStatusCode.Created);
+        //}
+
+        [Test]
+        public void AdevertismentsGetMethodWithPaameterReturnTest()
+        {
+            // Arrange
+            //var mockRepository = new Mock<IMovieRepository>();
+            AdPortalDbContext adPortalDbContext = new AdPortalDbContext();
+            //var mockRepository = new Mock<AdPortalDbContext>();
+            //var controller = new ImagesController(mockRepository.Object);
+            //var controller = new ImagesController();
+            //var m = new Mock<AdPortalDbContext>();
+            var c = new AdvertisementsController(adPortalDbContext);
+            //var c = new ImagesController(adPortalDbContext);
+
+            /// var c = m.Object;
+            //var u = c.Get();
+            //controller.adPortalDbContext = adPortalDbContext;
+            //var model = new Image()
+            //{
+            //    Id = 1,
+            //    FileName = "pilt",
+            //    ImageUrl = "www.pilt.ee",
+            //};
+
+            // Act    
+            var n = 1;
+            var actionResult = c.Get(n);
+            var s = actionResult as OkNegotiatedContentResult<Advertisement>;
+
+            //var createdResult = actionResult as  CreatedAtRouteNegotiatedContentResult<Image>;
+            //var r = actionResult as RedirectToRouteResult;
+            //var mo = r.Model as Image;
+            // Assert
+            Assert.IsNotNull(s);
+            Assert.AreEqual(s.Content.Id, n);
+            //Assert.IsNotNull(c..Content);
+
+            //Assert.AreEqual("DefaultApi", createdResult.RouteName);
+            //var f = c.adPortalDbContext.Images.FirstOrDefault(x => x.Id == n);
+            //Assert.AreEqual(f.Id, c.Get(n));//createdResult.RouteValues["id"]);
+        }
+
+
     }
 }

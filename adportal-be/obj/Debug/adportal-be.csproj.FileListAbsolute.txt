@@ -156,9 +156,6 @@ C:\Users\ArTuR\source\repos\adportal-be\adportal-be\bin\System.Net.Http.Formatti
 C:\Users\ArTuR\source\repos\adportal-be\adportal-be\bin\System.Web.Http.xml
 C:\Users\ArTuR\source\repos\adportal-be\adportal-be\bin\System.Web.Http.WebHost.xml
 C:\Users\ArTuR\source\repos\adportal-be\adportal-be\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\ArTuR\source\repos\adportal-be\adportal-be\obj\Debug\adportal-be.csprojAssemblyReference.cache
-C:\Users\ArTuR\source\repos\adportal-be\adportal-be\obj\Debug\adportal_be.Migrations.AdPortalDbCorrectModelDb.resources
-C:\Users\ArTuR\source\repos\adportal-be\adportal-be\obj\Debug\adportal-be.csproj.GenerateResource.cache
 C:\Users\ArTuR\source\repos\adportal-be\adportal-be\obj\Debug\adportal-be.csproj.CoreCompileInputs.cache
 C:\Users\ArTuR\source\repos\adportal-be\adportal-be\obj\Debug\adportal-be.csproj.CopyComplete
 C:\Users\ArTuR\source\repos\adportal-be\adportal-be\obj\Debug\adportal-be.dll
@@ -167,3 +164,6 @@ C:\Users\ArTuR\source\repos\adportal-be\adportal-be\bin\roslyn\System.Buffers.dl
 C:\Users\ArTuR\source\repos\adportal-be\adportal-be\bin\roslyn\System.Memory.dll
 C:\Users\ArTuR\source\repos\adportal-be\adportal-be\bin\roslyn\System.Numerics.Vectors.dll
 C:\Users\ArTuR\source\repos\adportal-be\adportal-be\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ArTuR\source\repos\adportal-be\adportal-be\obj\Debug\adportal-be.csprojAssemblyReference.cache
+C:\Users\ArTuR\source\repos\adportal-be\adportal-be\obj\Debug\adportal_be.Migrations.adportal.resources
+C:\Users\ArTuR\source\repos\adportal-be\adportal-be\obj\Debug\adportal-be.csproj.GenerateResource.cache
